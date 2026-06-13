@@ -121,6 +121,155 @@ function Stars({ r, size = 12 }) {
   return <span className="inline-flex items-center gap-0.5"><Star size={size} style={{ color: "#E8A93B", fill: "#E8A93B" }} /><span className="mono ink2" style={{ fontSize: 11 }}>{r.toFixed(1)}</span></span>;
 }
 
+/* ============================ YENİ SAYFALAR ============================ */
+const AboutPage = () => (
+  <div className="anim mx-auto max-w-3xl px-6 py-10">
+    <h1 className="fontui ink mb-6" style={{ fontSize: 28, fontWeight: 800 }}>KıyasBul Hakkında</h1>
+    <div className="surface border bd rounded-2xl p-6 shadowcard space-y-4">
+      <p className="fontui ink2 leading-relaxed" style={{ fontSize: 15 }}>
+        Merhaba! KıyasBul, teknoloji ürünlerinin fiyat ve özellik karşılaştırmasını yapan bağımsız bir platformdur.
+      </p>
+      <p className="fontui ink2 leading-relaxed" style={{ fontSize: 15 }}>
+        <strong className="ink">Amacımız:</strong> Farklı mağazalardaki fiyatları tek yerde toplayarak, en iyi fiyat/performans ürünlerini bulmanıza yardımcı olmak.
+      </p>
+      <p className="fontui ink2 leading-relaxed" style={{ fontSize: 15 }}>
+        <strong className="ink">Nasıl Çalışıyoruz?</strong> Piyasadaki güvenilir mağazalardan veri topluyor, ürünleri detaylı şekilde karşılaştırıyor ve size en güncel bilgileri sunuyoruz.
+      </p>
+      <div className="mt-6 p-4 rounded-xl" style={{ background: "rgba(59,130,246,.08)", border: "1px solid rgba(59,130,246,.2)" }}>
+        <p className="fontui" style={{ fontSize: 14, color: "#2563EB" }}>
+          <strong>💡 Misyonumuz:</strong> Teknoloji alışverişini kolay, şeffaf ve adil hale getirmek.
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const ContactPage = () => (
+  <div className="anim mx-auto max-w-3xl px-6 py-10">
+    <h1 className="fontui ink mb-6" style={{ fontSize: 28, fontWeight: 800 }}>İletişim</h1>
+    <div className="surface border bd rounded-2xl p-6 shadowcard space-y-6">
+      <div>
+        <h2 className="fontui ink mb-3" style={{ fontSize: 18, fontWeight: 700 }}>📧 Email</h2>
+        <a href="mailto:info@kiyasbul.shop" className="fontui inline-flex items-center gap-2 px-4 py-3 rounded-xl" style={{ fontSize: 15, background: "var(--surface2)", border: "1px solid var(--line)", color: "#2563EB", fontWeight: 600 }}>
+          <Mail size={18} /> info@kiyasbul.shop
+        </a>
+      </div>
+      <div>
+        <h2 className="fontui ink mb-3" style={{ fontSize: 18, fontWeight: 700 }}>💬 Geri Bildirim</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Önerileriniz, şikayetleriniz veya işbirliği teklifleriniz için yukarıdaki email adresine yazabilirsiniz. 
+          En kısa sürede dönüş yapıyoruz.
+        </p>
+      </div>
+      <div className="p-4 rounded-xl" style={{ background: "rgba(34,197,94,.08)", border: "1px solid rgba(34,197,94,.2)" }}>
+        <p className="fontui" style={{ fontSize: 14, color: "#16A34A" }}>
+          <strong>✅ Ortalama Yanıt Süresi:</strong> 24 saat içinde
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const PrivacyPage = () => (
+  <div className="anim mx-auto max-w-3xl px-6 py-10">
+    <h1 className="fontui ink mb-6" style={{ fontSize: 28, fontWeight: 800 }}>Gizlilik Politikası</h1>
+    <div className="surface border bd rounded-2xl p-6 shadowcard space-y-5">
+      <p className="mono ink2" style={{ fontSize: 12 }}>Son güncelleme: {new Date().toLocaleDateString('tr-TR')}</p>
+      
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>1. Topladığımız Bilgiler</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          KıyasBul olarak, site deneyimini iyileştirmek için temel istatistik bilgileri topluyoruz:
+        </p>
+        <ul className="list-disc pl-6 mt-2 space-y-1 fontui ink2" style={{ fontSize: 14 }}>
+          <li>Ziyaret istatistikleri (Google Analytics)</li>
+          <li>Tarayıcı ve cihaz bilgileri</li>
+          <li>Yaklaşık konum (ülke seviyesi)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>2. Çerezler (Cookies)</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Sitemiz, deneyiminizi iyileştirmek için çerezler kullanabilir. Tarayıcı ayarlarınızdan çerezleri devre dışı bırakabilirsiniz.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>3. Affiliate Linkler</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Sitemizdeki bazı linkler affiliate (satış ortaklığı) linkleridir. Bu linklere tıkladığınızda, tarayıcınıza bir çerez yerleştirilebilir ve yaptığınız alışverişten komisyon alabiliriz. Bu, sizin ödediğiniz fiyata etki etmez.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>4. Üçüncü Taraf Hizmetler</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Google Analytics gibi üçüncü taraf hizmetler, site trafiğini analiz etmek için kullanılabilir. Bu hizmetlerin kendi gizlilik politikaları geçerlidir.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>5. İletişim</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Gizlilik politikamız hakkında sorularınız için: <a href="mailto:info@kiyasbul.shop" className="text-blue-600 hover:underline">info@kiyasbul.shop</a>
+        </p>
+      </section>
+    </div>
+  </div>
+);
+
+const TermsPage = () => (
+  <div className="anim mx-auto max-w-3xl px-6 py-10">
+    <h1 className="fontui ink mb-6" style={{ fontSize: 28, fontWeight: 800 }}>Kullanım Şartları</h1>
+    <div className="surface border bd rounded-2xl p-6 shadowcard space-y-5">
+      <p className="mono ink2" style={{ fontSize: 12 }}>Son güncelleme: {new Date().toLocaleDateString('tr-TR')}</p>
+      
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>1. Hizmetin Doğası</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          KıyasBul, teknolojik ürünlerin fiyat ve özellik karşılaştırmasını sunan bir bilgi platformudur. Satış yapmıyoruz, sadece farklı mağazalardaki fiyatları gösteriyoruz.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>2. Fiyat Doğruluğu</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Fiyatlar düzenli olarak güncellenmeye çalışılsa da, anlık değişiklikler olabilir. Satın alma işlemi yapmadan önce ilgili mağazanın sitesinden güncel fiyatı kontrol etmenizi öneririz.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>3. Affiliate İlişkileri</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Bu site affiliate linkler içermektedir. Bu linklere tıklayıp alışveriş yaptığınızda komisyon alabiliriz. Bu, size sunulan fiyatı etkilemez.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>4. Sorumluluk Reddi</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          KıyasBul, üçüncü taraf sitelerdeki ürün kalitesi, teslimat, iade gibi konulardan sorumlu değildir. Alışverişinizi yaptığınız mağazanın şartları geçerlidir.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>5. Fikri Mülkiyet</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Sitedeki içerik, tasarım ve kodlar KıyasBul'a aittir. İzinsiz kopyalanamaz veya kullanılamaz.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="fontui ink mb-2" style={{ fontSize: 17, fontWeight: 700 }}>6. İletişim</h2>
+        <p className="fontui ink2 leading-relaxed" style={{ fontSize: 14 }}>
+          Sorularınız için: <a href="mailto:info@kiyasbul.shop" className="text-blue-600 hover:underline">info@kiyasbul.shop</a>
+        </p>
+      </section>
+    </div>
+  </div>
+);
+
 /* ============================ UYGULAMA ============================ */
 export default function App() {
   const load = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
@@ -151,7 +300,7 @@ export default function App() {
   const [aiUse, setAiUse] = useState(null);
   const [aiBudget, setAiBudget] = useState(null);
   const [aiThinking, setAiThinking] = useState(false);
-  const [alarm, setAlarm] = useState(null); // product or null
+  const [alarm, setAlarm] = useState(null);
   const [alarmPrice, setAlarmPrice] = useState("");
   const [alarmDone, setAlarmDone] = useState(false);
   const [channels, setChannels] = useState({ push: true, mail: false, sms: false });
@@ -367,7 +516,7 @@ export default function App() {
       {!isDesktop && <button onClick={back} className="press inline-flex items-center gap-1 ink2 mb-2" style={{ fontSize: 13 }}><ChevronLeft size={18} /> Geri</button>}
       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
         <div>
-          <h1 className="fontui font-bold ink" style={{ fontSize: 22 }}>{cat ? CAT_LABEL[cat] : searchTerm ? "“" + searchTerm + "”" : "Tüm ürünler"}</h1>
+          <h1 className="fontui font-bold ink" style={{ fontSize: 22 }}>{cat ? CAT_LABEL[cat] : searchTerm ? """ + searchTerm + """ : "Tüm ürünler"}</h1>
           <p className="mono ink2" style={{ fontSize: 12 }}>{results.length} sonuç</p>
         </div>
         <div className="flex items-center gap-2">
@@ -452,7 +601,7 @@ export default function App() {
     const sel = compare.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
     if (sel.length < 2) return (
       <div className="anim mt-4 lg:mt-6">
-        <Empty icon={Scale} title="Karşılaştırmak için en az 2 ürün seç" desc="Ürün kartlarındaki “Karşılaştır” düğmesine bas, farkları yan yana gösterelim." cta="Ürünlere göz at" onCta={home} />
+        <Empty icon={Scale} title="Karşılaştırmak için en az 2 ürün seç" desc="Ürün kartlarındaki "Karşılaştır" düğmesine bas, farkları yan yana gösterelim." cta="Ürünlere göz at" onCta={home} />
       </div>
     );
     const keys = sel.reduce((acc, p) => acc.filter((k) => k in p.specs), Object.keys(sel[0].specs)).slice(0, 9);
@@ -610,6 +759,10 @@ export default function App() {
       case "ai": return PageAi();
       case "favs": return PageFavs();
       case "notif": return PageNotif();
+      case "about": return <AboutPage />;
+      case "contact": return <ContactPage />;
+      case "privacy": return <PrivacyPage />;
+      case "terms": return <TermsPage />;
       default: return PageHome();
     }
   };
@@ -659,9 +812,27 @@ export default function App() {
           <div><div className="flex items-center gap-2 mb-3"><Logo size={32} /><Wordmark size={18} /></div><p className="fontui ink2" style={{ fontSize: 13, maxWidth: 230 }}>Karşılaştır, en uygununu bul. Teknolojide doğru seçim.</p></div>
           <div><p className="fontui font-bold ink mb-2.5" style={{ fontSize: 13 }}>Kategoriler</p>{CATEGORIES.map((c) => <button key={c.id} onClick={() => { setCat(c.id); setSearchTerm(""); go("results"); }} className="press block fontui ink2 py-1" style={{ fontSize: 13 }}>{c.label}</button>)}</div>
           <div><p className="fontui font-bold ink mb-2.5" style={{ fontSize: 13 }}>Keşfet</p><button onClick={() => { setAiStep(0); go("ai"); }} className="press block fontui ink2 py-1" style={{ fontSize: 13 }}>AI Öneri</button><button onClick={() => go("compare")} className="press block fontui ink2 py-1" style={{ fontSize: 13 }}>Karşılaştır</button><button onClick={() => go("favs")} className="press block fontui ink2 py-1" style={{ fontSize: 13 }}>Favoriler</button></div>
-          <div><p className="fontui font-bold ink mb-2.5" style={{ fontSize: 13 }}>KıyasBul</p><span className="block fontui ink2 py-1" style={{ fontSize: 13 }}>Hakkımızda</span><span className="block fontui ink2 py-1" style={{ fontSize: 13 }}>İletişim</span><span className="block fontui ink2 py-1" style={{ fontSize: 13 }}>Gizlilik</span></div>
+          <div>
+            <p className="fontui font-bold ink mb-2.5" style={{ fontSize: 13 }}>KıyasBul</p>
+            <button onClick={() => go("about")} className="press block fontui ink2 py-1 text-left" style={{ fontSize: 13 }}>Hakkımızda</button>
+            <button onClick={() => go("contact")} className="press block fontui ink2 py-1 text-left" style={{ fontSize: 13 }}>İletişim</button>
+            <button onClick={() => go("privacy")} className="press block fontui ink2 py-1 text-left" style={{ fontSize: 13 }}>Gizlilik Politikası</button>
+            <button onClick={() => go("terms")} className="press block fontui ink2 py-1 text-left" style={{ fontSize: 13 }}>Kullanım Şartları</button>
+          </div>
         </div>
-        <div className="border-t bd"><div className="mx-auto max-w-6xl px-8 py-4 flex items-center justify-between"><p className="mono" style={{ fontSize: 11, color: "#A4ABB5" }}>© 2026 KıyasBul</p><p className="mono" style={{ fontSize: 11, color: "#C2C7D0" }}>Gösterilen veriler örnektir</p></div></div>
+        <div className="border-t bd">
+          <div className="mx-auto max-w-6xl px-8 py-4">
+            <div className="mb-3 p-3 rounded-xl" style={{ background: "rgba(234,179,8,.08)", border: "1px solid rgba(234,179,8,.2)" }}>
+              <p className="fontui" style={{ fontSize: 11, color: "#B8960A", lineHeight: 1.5 }}>
+                <strong>📢 Şeffaflık:</strong> Bu sitede affiliate linkler bulunmaktadır. Linklere tıklayıp alışveriş yaptığınızda küçük bir komisyon alabiliriz. Bu, sizin ödediğiniz fiyata etki etmez.
+              </p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="mono" style={{ fontSize: 11, color: "#A4ABB5" }}>© 2026 KıyasBul</p>
+              <p className="mono" style={{ fontSize: 11, color: "#C2C7D0" }}>Gösterilen veriler örnektir</p>
+            </div>
+          </div>
+        </div>
       </footer>
 
       {/* ALT NAV (mobil) */}
