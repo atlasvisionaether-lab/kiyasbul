@@ -516,7 +516,8 @@ export default function App() {
       {!isDesktop && <button onClick={back} className="press inline-flex items-center gap-1 ink2 mb-2" style={{ fontSize: 13 }}><ChevronLeft size={18} /> Geri</button>}
       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
         <div>
-          <h1 className="fontui font-bold ink" style={{ fontSize: 22 }}>{cat ? CAT_LABEL[cat] : searchTerm ? """ + searchTerm + """ : "Tüm ürünler"}</h1>
+          {/* DÜZELTİLDİ: Template literal kullanıldı */}
+          <h1 className="fontui font-bold ink" style={{ fontSize: 22 }}>{cat ? CAT_LABEL[cat] : searchTerm ? `"${searchTerm}"` : "Tüm ürünler"}</h1>
           <p className="mono ink2" style={{ fontSize: 12 }}>{results.length} sonuç</p>
         </div>
         <div className="flex items-center gap-2">
@@ -601,7 +602,8 @@ export default function App() {
     const sel = compare.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
     if (sel.length < 2) return (
       <div className="anim mt-4 lg:mt-6">
-        <Empty icon={Scale} title="Karşılaştırmak için en az 2 ürün seç" desc="Ürün kartlarındaki "Karşılaştır" düğmesine bas, farkları yan yana gösterelim." cta="Ürünlere göz at" onCta={home} />
+        {/* DÜZELTİLDİ: Desc attribute'unda string quotes düzeltildi */}
+        <Empty icon={Scale} title="Karşılaştırmak için en az 2 ürün seç" desc={'Ürün kartlarındaki "Karşılaştır" düğmesine bas, farkları yan yana gösterelim.'} cta="Ürünlere göz at" onCta={home} />
       </div>
     );
     const keys = sel.reduce((acc, p) => acc.filter((k) => k in p.specs), Object.keys(sel[0].specs)).slice(0, 9);
@@ -670,7 +672,7 @@ export default function App() {
 
   const PageAi = () => {
     const uses = [{ id: "oyun", label: "Oyun", d: "Yüksek performans, soğutma", icon: Zap }, { id: "foto", label: "Fotoğraf", d: "İyi kamera ve ekran", icon: Camera }, { id: "is", label: "İş", d: "Verim, batarya, taşınabilirlik", icon: Laptop }, { id: "gunluk", label: "Günlük kullanım", d: "Dengeli ve uygun fiyat", icon: Smartphone }];
-    const budgets = ["10.000 ₺ altı", "10.000 – 20.000 ₺", "20.000 – 35.000 ₺", "35.000 ₺ üstü"];
+    const budgets = ["10.000 ₺ altı", "10.000 – 20.000 ₺", "20.000 – 35.000 ₺", "35.000  üstü"];
     const useLabel = uses.find((u) => u.id === aiUse)?.label;
     const wrap = (children) => <div className="anim mt-4 lg:mt-10 mx-auto" style={{ maxWidth: 620 }}>{children}</div>;
     const badge = (s) => <div className="inline-flex items-center gap-2 ai bgaib px-3 py-1.5 rounded-full mb-4"><Sparkles size={14} /><span className="mono" style={{ fontSize: 11, fontWeight: 700 }}>AI Asistan · {s}/2</span></div>;
@@ -732,7 +734,7 @@ export default function App() {
 
   const PageNotif = () => {
     const items = [
-      { i: TrendingDown, t: "Fiyat düştü", d: "Marka A · A1 Pro · 25.999 → 24.999 ₺", time: "2 sa önce", unread: true, kind: "save" },
+      { i: TrendingDown, t: "Fiyat düştü", d: "Marka A · A1 Pro · 25.999 → 24.999 ", time: "2 sa önce", unread: true, kind: "save" },
       { i: Package, t: "Yeniden stokta", d: "Marka C · C5 Lite tekrar satışta", time: "Dün", unread: true, kind: "ink" },
       { i: BellRing, t: "Hedef fiyata ulaşıldı", d: "Marka B · B7 alarmın tetiklendi", time: "3 gün önce", unread: false, kind: "ai" },
     ];
