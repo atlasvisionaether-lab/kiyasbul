@@ -376,7 +376,7 @@ export default function App() {
         </div>
       </div>
       <div className="flex gap-6 items-start">
-        <aside className="hidden lg:block shrink-0 sticky top-24" style={{ width: 220 }}><div className="surface border bd rounded-2xl p-4 shadowcard"><Filters /></div></aside>
+        <aside className="hidden lg:block shrink-0 sticky top-24" style={{ width: 220 }}><div className="surface border bd rounded-2xl p-4 shadowcard">{Filters()}</div></aside>
         <div className="flex-1 min-w-0">
           {results.length === 0
             ? <Empty icon={Search} title="Sonuç bulunamadı" desc="Farklı bir kelime dene veya filtreleri temizle." cta="Filtreleri temizle" onCta={clearFilters} />
@@ -604,13 +604,13 @@ export default function App() {
 
   const renderPage = () => {
     switch (page) {
-      case "results": return <PageResults />;
-      case "detail": return <PageDetail />;
-      case "compare": return <PageCompare />;
-      case "ai": return <PageAi />;
-      case "favs": return <PageFavs />;
-      case "notif": return <PageNotif />;
-      default: return <PageHome />;
+      case "results": return PageResults();
+      case "detail": return PageDetail();
+      case "compare": return PageCompare();
+      case "ai": return PageAi();
+      case "favs": return PageFavs();
+      case "notif": return PageNotif();
+      default: return PageHome();
     }
   };
 
@@ -685,7 +685,7 @@ export default function App() {
         <div className="lg:hidden fixed inset-0 z-40 flex items-end" style={{ background: "rgba(16,21,27,.45)" }} onClick={() => setSheetOpen(false)}>
           <div className="w-full surface p-5 anim" style={{ borderTopLeftRadius: 22, borderTopRightRadius: 22, maxHeight: "80%", overflowY: "auto" }} onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4"><p className="fontui font-bold ink" style={{ fontSize: 16 }}>Filtrele</p><button onClick={() => setSheetOpen(false)} className="press ink2"><X size={20} /></button></div>
-            <Filters />
+            {Filters()}
             <button onClick={() => setSheetOpen(false)} className="press w-full mt-5 btn-primary fontui font-semibold rounded-xl py-3" style={{ fontSize: 14 }}>{results.length} sonucu göster</button>
           </div>
         </div>
