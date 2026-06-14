@@ -8,7 +8,7 @@ import {
   Sun, Moon, ArrowUp,
 } from "lucide-react";
 
-/* ============================ VERİ (örnek / placeholder) ============================ */
+/* ============================ VERİ (Gerçek & Demo Karışık) ============================ */
 const CATEGORIES = [
   { id: "telefon", label: "Telefon", icon: Smartphone },
   { id: "laptop", label: "Laptop", icon: Laptop },
@@ -22,18 +22,18 @@ const CAT_LABEL = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.label]));
 const tl = (n) => n.toLocaleString("tr-TR") + " ₺";
 
 const PRODUCTS = [
-  { id: "p1", category: "telefon", brand: "Marka A", model: "A1 Pro", mono: "A1", name: "Marka A · A1 Pro", year: 2025, month: 9, price: 24999, rating: 4.5,
-    specs: { "Yonga seti": "8 çekirdek · 3.2 GHz", "RAM": "12 GB", "Depolama": "256 GB", "Ekran": "6.7\" AMOLED", "Yenileme": "120 Hz", "Kamera": "50 MP üçlü", "Batarya": "5000 mAh", "Ağırlık": "198 g", "Bağlantı": "5G · Wi-Fi 6E" },
-    history: [27999, 26999, 26499, 25999, 25499, 24999],
-    sellers: [{ name: "Mağaza A", price: 24999, stock: true, ship: "Ücretsiz" }, { name: "Mağaza B", price: 25490, stock: true, ship: "39 ₺" }, { name: "Mağaza C", price: 25999, stock: false, ship: "—" }] },
-  { id: "p2", category: "telefon", brand: "Marka B", model: "B7", mono: "B7", name: "Marka B · B7", year: 2025, month: 6, price: 19499, rating: 4.2,
-    specs: { "Yonga seti": "8 çekirdek · 2.8 GHz", "RAM": "8 GB", "Depolama": "256 GB", "Ekran": "6.6\" AMOLED", "Yenileme": "120 Hz", "Kamera": "64 MP ikili", "Batarya": "5500 mAh", "Ağırlık": "205 g", "Bağlantı": "5G · Wi-Fi 6" },
-    history: [21999, 21499, 21199, 20499, 19999, 19499],
-    sellers: [{ name: "Mağaza B", price: 19499, stock: true, ship: "Ücretsiz" }, { name: "Mağaza A", price: 19990, stock: true, ship: "Ücretsiz" }, { name: "Mağaza D", price: 20250, stock: true, ship: "49 ₺" }] },
-  { id: "p3", category: "telefon", brand: "Marka C", model: "C5 Lite", mono: "C5", name: "Marka C · C5 Lite", year: 2024, month: 11, price: 12999, rating: 3.9,
-    specs: { "Yonga seti": "8 çekirdek · 2.4 GHz", "RAM": "8 GB", "Depolama": "128 GB", "Ekran": "6.5\" LCD", "Yenileme": "90 Hz", "Kamera": "48 MP ikili", "Batarya": "5000 mAh", "Ağırlık": "190 g", "Bağlantı": "4G · Wi-Fi 5" },
-    history: [14499, 14199, 13999, 13499, 13199, 12999],
-    sellers: [{ name: "Mağaza C", price: 12999, stock: true, ship: "Ücretsiz" }, { name: "Mağaza A", price: 13290, stock: true, ship: "39 ₺" }] },
+  { id: "p1", category: "telefon", brand: "Xiaomi", model: "POCO X6 Pro", mono: "X6", name: "Xiaomi POCO X6 Pro 512GB", year: 2024, month: 1, price: 22499, rating: 4.7,
+    specs: { "Yonga seti": "Dimensity 8300-Ultra", "RAM": "12 GB", "Depolama": "512 GB", "Ekran": "6.67\" 1800 Nit", "Yenileme": "120 Hz", "Kamera": "64 MP OIS", "Batarya": "5000 mAh · 67W", "Ağırlık": "186 g", "Bağlantı": "5G · Wi-Fi 6" },
+    history: [24999, 23999, 23499, 22999, 22799, 22499],
+    sellers: [{ name: "Mi Store", price: 22499, stock: true, ship: "Ücretsiz" }, { name: "Vatan", price: 22999, stock: true, ship: "Ücretsiz" }, { name: "Teknosa", price: 23499, stock: true, ship: "49 ₺" }] },
+  { id: "p2", category: "telefon", brand: "Samsung", model: "Galaxy S23 FE", mono: "S23", name: "Samsung Galaxy S23 FE 256GB", year: 2023, month: 10, price: 26899, rating: 4.5,
+    specs: { "Yonga seti": "Exynos 2200", "RAM": "8 GB", "Depolama": "256 GB", "Ekran": "6.4\" 1450 Nit", "Yenileme": "120 Hz", "Kamera": "50 MP OIS", "Batarya": "4500 mAh · 25W", "Ağırlık": "209 g", "Bağlantı": "5G · Wi-Fi 6E" },
+    history: [29999, 28999, 27999, 27499, 26999, 26899],
+    sellers: [{ name: "Samsung TR", price: 26899, stock: true, ship: "Ücretsiz" }, { name: "Amazon", price: 27100, stock: true, ship: "Ücretsiz" }] },
+  { id: "p3", category: "telefon", brand: "Realme", model: "11 Pro+", mono: "R11", name: "Realme 11 Pro+ 512GB", year: 2023, month: 5, price: 23999, rating: 4.6,
+    specs: { "Yonga seti": "Dimensity 7050", "RAM": "12 GB", "Depolama": "512 GB", "Ekran": "6.7\" 950 Nit OLED", "Yenileme": "120 Hz", "Kamera": "200 MP OIS", "Batarya": "5000 mAh · 100W", "Ağırlık": "183 g", "Bağlantı": "5G · Wi-Fi 6" },
+    history: [25999, 25499, 24999, 24499, 24199, 23999],
+    sellers: [{ name: "Vatan", price: 23999, stock: true, ship: "Ücretsiz" }, { name: "Mediamarkt", price: 24290, stock: true, ship: "Ücretsiz" }] },
   { id: "l1", category: "laptop", brand: "Marka D", model: "Pro 14", mono: "P14", name: "Marka D · Pro 14", year: 2025, month: 3, price: 42999, rating: 4.6,
     specs: { "İşlemci": "8 çekirdek", "RAM": "16 GB", "Depolama": "512 GB SSD", "Ekran": "14\" 2.5K", "Yenileme": "120 Hz", "Batarya": "70 Wh", "Ağırlık": "1.45 kg", "Bağlantı": "Wi-Fi 6E · USB-C" },
     history: [45999, 45499, 44499, 43999, 43499, 42999],
@@ -516,7 +516,6 @@ export default function App() {
       {!isDesktop && <button onClick={back} className="press inline-flex items-center gap-1 ink2 mb-2" style={{ fontSize: 13 }}><ChevronLeft size={18} /> Geri</button>}
       <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
         <div>
-          {/* DÜZELTİLDİ: Template literal kullanıldı */}
           <h1 className="fontui font-bold ink" style={{ fontSize: 22 }}>{cat ? CAT_LABEL[cat] : searchTerm ? `"${searchTerm}"` : "Tüm ürünler"}</h1>
           <p className="mono ink2" style={{ fontSize: 12 }}>{results.length} sonuç</p>
         </div>
@@ -602,7 +601,6 @@ export default function App() {
     const sel = compare.map((id) => PRODUCTS.find((p) => p.id === id)).filter(Boolean);
     if (sel.length < 2) return (
       <div className="anim mt-4 lg:mt-6">
-        {/* DÜZELTİLDİ: Desc attribute'unda string quotes düzeltildi */}
         <Empty icon={Scale} title="Karşılaştırmak için en az 2 ürün seç" desc={'Ürün kartlarındaki "Karşılaştır" düğmesine bas, farkları yan yana gösterelim.'} cta="Ürünlere göz at" onCta={home} />
       </div>
     );
