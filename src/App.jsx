@@ -78,15 +78,15 @@ function Wordmark({ size = 22 }) {
 }
 
 // GÜÇLENDİRİLMİŞ VE HATASIZ GÖRSEL MOTORU
+// GÜÇLENDİRİLMİŞ VE TEMİZ GÖRSEL MOTORU
 function Thumb({ p, className = "", radius = 14 }) {
   const [imgError, setImgError] = useState(false);
   
   const cat = (p?.category || "telefon").toLowerCase();
   const Icon = CAT_ICON[cat] || Smartphone;
-  const rawImg = p?.img || p?.image; // AWS'den gelen ham resim linki
   
-  // PROXY HİLESİ: Engelleri aşmak ve resimleri optimize etmek için aracı servis
-  const imgUrl = rawImg ? `https://wsrv.nl/?url=${encodeURIComponent(rawImg)}` : null;
+  // Hiçbir aracı kullanmadan doğrudan senin AWS'ye girdiğin linki alıyoruz
+  const imgUrl = p?.img || p?.image; 
 
   return (
     <div className={"relative flex items-center justify-center overflow-hidden " + className}
@@ -95,8 +95,9 @@ function Thumb({ p, className = "", radius = 14 }) {
         <img 
           src={imgUrl} 
           alt={p?.name || ""} 
-          onError={() => setImgError(true)} // Resim bozuksa otomatik ikona döner
+          onError={() => setImgError(true)} // Resim bozuksa veya yüklenemezse otomatik ikona döner
           className="w-full h-full object-contain p-2" 
+          style={{ mixBlendMode: "multiply" }}
         />
       ) : (
         <Icon className="opacity-20" style={{ width: "38%", height: "38%", color: "#10151B" }} strokeWidth={1.3} />
