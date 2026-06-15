@@ -272,6 +272,19 @@ const TermsPage = () => (
 
 /* ============================ UYGULAMA ============================ */
 export default function App() {
+  // --- AWS API GATEWAY BAĞLANTISI ---
+  const [apiProducts, setApiProducts] = useState([]); // Yeni veriyi burada tutacağız
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("🚀 AWS'den Gelen Canlı Veri:", data);
+        setApiProducts(data); // Veriyi hafızaya attık
+      })
+      .catch((err) => console.error("🚨 AWS Bağlantı Hatası:", err));
+  }, []);
+  // ----------------------------------
   const load = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
   const isDesktop = useIsDesktop();
   const maxCompare = isDesktop ? 3 : 2;
@@ -281,6 +294,7 @@ export default function App() {
   const go = (p) => { setStack((s) => [...s, p]); window.scrollTo({ top: 0 }); };
   const back = () => setStack((s) => (s.length > 1 ? s.slice(0, -1) : s));
   const home = () => { setStack(["home"]); window.scrollTo({ top: 0 }); };
+
 
   const [query, setQuery] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -319,7 +333,7 @@ export default function App() {
 
   const priceCeil = Math.max(...PRODUCTS.map((p) => p.price));
   const results = (() => {
-    let list = PRODUCTS;
+    let list = apiProducts.length > 0 ? apiProducts : PRODUCTS;
     if (cat) list = list.filter((p) => p.category === cat);
     if (brandFilter.length) list = list.filter((p) => brandFilter.includes(p.brand));
     if (maxPrice > 0) list = list.filter((p) => p.price <= maxPrice);
