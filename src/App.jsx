@@ -282,6 +282,7 @@ useEffect(() => {
       .catch((err) => console.error("🚨 AWS Bağlantı Hatası:", err));
   }, []);
   // ----------------------------------
+  const [apiProducts, setApiProducts] = useState([]);
   const load = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
   const isDesktop = useIsDesktop();
   const maxCompare = isDesktop ? 3 : 2;
