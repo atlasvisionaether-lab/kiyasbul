@@ -272,15 +272,12 @@ const TermsPage = () => (
 
 /* ============================ UYGULAMA ============================ */
 export default function App() {
-  // --- AWS API GATEWAY BAĞLANTISI ---
-  const [apiProducts, setApiProducts] = useState([]); // Yeni veriyi burada tutacağız
-
-  useEffect(() => {
-    fetch("/api/products")
+useEffect(() => {
+    fetch("https://6fc49hsoq6.execute-api.us-east-1.amazonaws.com/v2/products")
       .then((res) => res.json())
       .then((data) => {
         console.log("🚀 AWS'den Gelen Canlı Veri:", data);
-        setApiProducts(data); // Veriyi hafızaya attık
+        setApiProducts(data);
       })
       .catch((err) => console.error("🚨 AWS Bağlantı Hatası:", err));
   }, []);
