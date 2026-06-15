@@ -77,30 +77,32 @@ function Wordmark({ size = 22 }) {
   return <span className="fontui" style={{ fontSize: size, fontWeight: 800, letterSpacing: "-.025em", lineHeight: 1 }}><span className="ink">Kıyas</span><span className="save">Bul</span></span>;
 }
 
-// GÜÇLENDİRİLMİŞ VE HATASIZ GÖRSEL MOTORU
-// GÜÇLENDİRİLMİŞ VE TEMİZ GÖRSEL MOTORU
+// KESİN ÇÖZÜM: YEDEKLİ GÖRSEL MOTORU
 function Thumb({ p, className = "", radius = 14 }) {
   const [imgError, setImgError] = useState(false);
   
-  const cat = (p?.category || "telefon").toLowerCase();
-  const Icon = CAT_ICON[cat] || Smartphone;
-  
-  // Hiçbir aracı kullanmadan doğrudan senin AWS'ye girdiğin linki alıyoruz
+  // AWS'den gelen resim
   const imgUrl = p?.img || p?.image; 
+  // Her koşulda %100 çalışan, telifsiz şık bir telefon yedek görseli
+  const backupImg = "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop";
 
   return (
     <div className={"relative flex items-center justify-center overflow-hidden " + className}
       style={{ borderRadius: radius, background: "linear-gradient(145deg,#FBFCFE 0%,#EEF1F6 55%,#E6EAF1 100%)", border: "1px solid rgba(16,21,27,.06)" }}>
-      {(imgUrl && !imgError) ? (
+      {(!imgError && imgUrl) ? (
         <img 
           src={imgUrl} 
           alt={p?.name || ""} 
-          onError={() => setImgError(true)} // Resim bozuksa veya yüklenemezse otomatik ikona döner
+          onError={() => setImgError(true)} // Eğer AWS resmi yine engellenirse ANINDA yedeğe geçer!
           className="w-full h-full object-contain p-2" 
           style={{ mixBlendMode: "multiply" }}
         />
       ) : (
-        <Icon className="opacity-20" style={{ width: "38%", height: "38%", color: "#10151B" }} strokeWidth={1.3} />
+        <img 
+          src={backupImg} 
+          alt="Yedek Telefon Görseli" 
+          className="w-full h-full object-cover opacity-90" 
+        />
       )}
       <span className="mono absolute right-1.5 bottom-1" style={{ fontSize: 9, color: "rgba(16,21,27,.34)" }}>{p?.mono || ""}</span>
     </div>
@@ -133,11 +135,12 @@ function Stars({ r, size = 12 }) {
 export default function App() {
   const [apiProducts, setApiProducts] = useState([]);
 
-  useEffect(() => {
-    fetch("https://6fc49hsoq6.execute-api.us-east-1.amazonaws.com/v2/products")
+useEffect(() => {
+    // ?t= hilesi (Cache-Buster) tarayıcıyı her seferinde YENİ veriyi çekmeye zorlar!
+    fetch("https://6fc49hsoq6.execute-api.us-east-1.amazonaws.com/v2/products?t=" + new Date().getTime())
       .then((res) => res.json())
       .then((data) => {
-        console.log("🚀 AWS'den Gelen Canlı Veri:", data);
+        console.log("🚀 AWS'den Gelen YEPYENİ Canlı Veri:", data);
         if (Array.isArray(data)) setApiProducts(data);
       })
       .catch((err) => console.error("🚨 AWS Bağlantı Hatası:", err));
