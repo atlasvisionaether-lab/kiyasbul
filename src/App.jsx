@@ -77,14 +77,11 @@ function Wordmark({ size = 22 }) {
   return <span className="fontui" style={{ fontSize: size, fontWeight: 800, letterSpacing: "-.025em", lineHeight: 1 }}><span className="ink">Kıyas</span><span className="save">Bul</span></span>;
 }
 
-// GÜÇLENDİRİLMİŞ GÖRSEL MOTORU (CORS ve Hotlink engellerini Proxy ile aşar)
+// GÜÇLENDİRİLMİŞ GÖRSEL MOTORU
 function Thumb({ p, className = "", radius = 14 }) {
   const cat = (p?.category || "telefon").toLowerCase();
   const Icon = CAT_ICON[cat] || Smartphone;
-  const rawImg = p?.img || p?.image; // AWS'den gelen ham resim linki
-  
-  // PROXY HİLESİ: Vatan'ın engelini aşmak için aracı servis kullanıyoruz
-  const imgUrl = rawImg ? `https://wsrv.nl/?url=${encodeURIComponent(rawImg)}` : null;
+  const imgUrl = p?.img || p?.image; // AWS'den gelen resim etiketlerini okur
 
   return (
     <div className={"relative flex items-center justify-center overflow-hidden " + className}
