@@ -330,19 +330,29 @@ useEffect(() => {
   const openAlarm = (p) => { setAlarm(p); setAlarmPrice(String(Math.round(cheapestOf(p) * 0.9 / 100) * 100)); setAlarmDone(false); };
 
   const priceCeil = Math.max(...PRODUCTS.map((p) => p.price));
-  const results = (() => {
-   // Artık veritabanından gelen listeyi ana liste yapıyoruz
-    let list = apiProducts.length > 0 ? apiProducts : PRODUCTS;
-    if (cat) list = list.filter((p) => p.category === cat);
-    if (brandFilter.length) list = list.filter((p) => brandFilter.includes(p.brand));
-    if (maxPrice > 0) list = list.filter((p) => p.price <= maxPrice);
-    if (searchTerm) { const q = searchTerm.toLocaleLowerCase("tr"); list = list.filter((p) => p.name.toLocaleLowerCase("tr").includes(q)); }
-    if (sort === "En düşük fiyat") list = [...list].sort((a, b) => a.price - b.price);
-    else if (sort === "En yüksek fiyat") list = [...list].sort((a, b) => b.price - a.price);
-    else if (sort === "En yeni") list = [...list].sort((a, b) => b.year * 12 + b.month - (a.year * 12 + a.month));
-    else if (sort === "Puan") list = [...list].sort((a, b) => b.rating - a.rating);
-    return list;
-  })();
+const results = (() => {
+  let list = apiProducts.length > 0 ? apiProducts : PRODUCTS;
+  
+  if (cat) {
+    list = list.filter((p) => p.category?.toLowerCase() === cat.toLowerCase());
+  }
+  if (brandFilter.length) {
+    list = list.filter((p) => brandFilter.includes(p.brand));
+  }
+  if (maxPrice > 0) {
+    list = list.filter((p) => p.price <= maxPrice);
+  }
+  if (searchTerm) {
+    const q = searchTerm.toLocaleLowerCase("tr");
+    list = list.filter((p) => p.name.toLocaleLowerCase("tr").includes(q));
+  }
+  if (sort === "En düşük fiyat") list = [...list].sort((a, b) => a.price - b.price);
+  else if (sort === "En yüksek fiyat") list = [...list].sort((a, b) => b.price - a.price);
+  else if (sort === "En yeni") list = [...list].sort((a, b) => b.year * 12 + b.month - (a.year * 12 + a.month));
+  else if (sort === "Puan") list = [...list].sort((a, b) => b.rating - a.rating);
+  
+  return list;
+})();
   const clearFilters = () => { setCat(null); setBrandFilter([]); setMaxPrice(0); setSearchTerm(""); setQuery(""); };
   const startAi = () => { setAiThinking(true); setTimeout(() => { setAiThinking(false); setAiStep(2); }, 1100); };
 
