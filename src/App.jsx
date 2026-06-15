@@ -331,6 +331,7 @@ useEffect(() => {
 
   const priceCeil = Math.max(...PRODUCTS.map((p) => p.price));
   const results = (() => {
+   // Artık veritabanından gelen listeyi ana liste yapıyoruz
     let list = apiProducts.length > 0 ? apiProducts : PRODUCTS;
     if (cat) list = list.filter((p) => p.category === cat);
     if (brandFilter.length) list = list.filter((p) => brandFilter.includes(p.brand));
