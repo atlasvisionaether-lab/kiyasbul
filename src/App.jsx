@@ -77,17 +77,27 @@ function Wordmark({ size = 22 }) {
   return <span className="fontui" style={{ fontSize: size, fontWeight: 800, letterSpacing: "-.025em", lineHeight: 1 }}><span className="ink">Kıyas</span><span className="save">Bul</span></span>;
 }
 
-// GÜÇLENDİRİLMİŞ GÖRSEL MOTORU
+// GÜÇLENDİRİLMİŞ VE HATASIZ GÖRSEL MOTORU
 function Thumb({ p, className = "", radius = 14 }) {
+  const [imgError, setImgError] = useState(false);
+  
   const cat = (p?.category || "telefon").toLowerCase();
   const Icon = CAT_ICON[cat] || Smartphone;
-  const imgUrl = p?.img || p?.image; // AWS'den gelen resim etiketlerini okur
+  const rawImg = p?.img || p?.image; // AWS'den gelen ham resim linki
+  
+  // PROXY HİLESİ: Engelleri aşmak ve resimleri optimize etmek için aracı servis
+  const imgUrl = rawImg ? `https://wsrv.nl/?url=${encodeURIComponent(rawImg)}` : null;
 
   return (
     <div className={"relative flex items-center justify-center overflow-hidden " + className}
       style={{ borderRadius: radius, background: "linear-gradient(145deg,#FBFCFE 0%,#EEF1F6 55%,#E6EAF1 100%)", border: "1px solid rgba(16,21,27,.06)" }}>
-      {imgUrl ? (
-        <img src={imgUrl} alt={p?.name || ""} className="w-full h-full object-contain" style={{ mixBlendMode: "multiply", padding: 8 }} />
+      {(imgUrl && !imgError) ? (
+        <img 
+          src={imgUrl} 
+          alt={p?.name || ""} 
+          onError={() => setImgError(true)} // Resim bozuksa otomatik ikona döner
+          className="w-full h-full object-contain p-2" 
+        />
       ) : (
         <Icon className="opacity-20" style={{ width: "38%", height: "38%", color: "#10151B" }} strokeWidth={1.3} />
       )}
