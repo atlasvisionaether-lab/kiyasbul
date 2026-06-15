@@ -380,7 +380,7 @@ const results = (() => {
             <span style={{ width: 3, height: 3, borderRadius: 9, background: "#CBD0D8" }} /><Stars r={p.rating} size={12} />
           </div>
           <div className="mt-auto pt-2.5">
-            <p className="mono" style={{ fontSize: 9, color: "#9AA1AC", letterSpacing: ".04em" }}>EN DÜŞÜK · {p.sellers.length} SATICI</p>
+            <p className="mono" style={{ fontSize: 9, color: "#9AA1AC", letterSpacing: ".04em" }}>EN DÜŞÜK • {p.sellers?.length || 1} SATICI</p>
             <p className="mono ink" style={{ fontSize: 18, fontWeight: 600 }}>{tl(cheap)}</p>
             <button onClick={(e) => { e.stopPropagation(); toggleCompare(p.id); }}
               className="press mt-2 w-full inline-flex items-center justify-center gap-1.5 rounded-xl py-2" style={{ fontSize: 12, fontWeight: 600, color: cmp ? "var(--bg)" : "var(--ink2)", background: cmp ? "var(--ink)" : "var(--surface)", border: cmp ? "1px solid var(--ink)" : "1px solid var(--line)" }}>
