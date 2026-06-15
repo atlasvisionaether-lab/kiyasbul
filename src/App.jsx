@@ -58,8 +58,8 @@ const PRODUCTS = [
 const BRANDS = [...new Set(PRODUCTS.map((p) => p.brand))];
 
 const num = (s) => { const m = String(s).replace(",", ".").match(/[\d.]+/); return m ? parseFloat(m[0]) : null; };
-const cheapestOf = (p) => Math.min(...p.sellers.map((s) => s.price));
-const dropPct = (p) => Math.round(((p.history[0] - p.history[p.history.length - 1]) / p.history[0]) * 100);
+const cheapestOf = (p) => p.sellers?.length ? Math.min(...p.sellers.map((s) => s.price)) : (p.price || 0);
+const dropPct = (p) => p.history?.length > 0 ? Math.round(((p.history[0] - p.history[p.history.length - 1]) / p.history[0]) * 100) : 0;
 const SPEC_ICON = { "Yonga seti": Cpu, "İşlemci": Cpu, "RAM": MemoryStick, "Depolama": HardDrive, "Ekran": Maximize, "Yenileme": Zap, "Kamera": Camera, "Batarya": BatteryFull };
 const HIGHER_BETTER = ["RAM", "Depolama", "Batarya", "Yenileme", "Ekran", "Sürücü"];
 
